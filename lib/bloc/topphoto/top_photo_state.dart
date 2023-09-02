@@ -4,13 +4,14 @@ abstract class ITopPhotoState {}
 
 class LoadTopPhotoState extends ITopPhotoState {}
 
-class ErrorTopPhotoState extends ITopPhotoState {}
+class ErrorTopPhotoState extends ITopPhotoState {
+  int curentpage;
+  ErrorTopPhotoState(this.curentpage);
+}
 
 class TopPhotoState extends ITopPhotoState {
-  List<Photo> wallpaper;
   List<Photo> allwallpaper;
-  bool isloaded;
-  bool lodingsate;
-  TopPhotoState(
-      this.wallpaper, this.allwallpaper, this.isloaded, this.lodingsate);
+  int totalpage;
+  int curentpage;
+  TopPhotoState(this.allwallpaper, this.totalpage, this.curentpage);
 }

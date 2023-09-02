@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+
 import '../../model/photo.dart';
 
 abstract class IHomeState {}
@@ -7,8 +9,11 @@ class LoadHomeState extends IHomeState {}
 class ErrorHomeState extends IHomeState {}
 
 class HomeState extends IHomeState {
-  List<Photo> allwallpaper = [];
-  List<Photo> topwallpaper = [];
-  List<Photo> junglewallpaper = [];
-  HomeState(this.allwallpaper, this.topwallpaper, this.junglewallpaper);
+  Either<String, Map> getallphoto;
+  Either<String, Map> gettopphoto;
+  Either<String, Map> getnaturephoto;
+  Either<String, Map> getanimalphoto;
+  Either<String, Map> getpeoplephoto;
+  HomeState(this.getallphoto, this.gettopphoto, this.getnaturephoto,
+      this.getanimalphoto, this.getpeoplephoto);
 }

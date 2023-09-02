@@ -1,135 +1,72 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wallpaper/bloc/homepagebloc/homepage_event.dart';
 import 'package:wallpaper/bloc/homepagebloc/homepage_state.dart';
 
 import '../../di/di.dart';
 import '../../model/photo.dart';
+import '../../repository/allphotorepository.dart';
+import '../../repository/animalphotorepository.dart';
+import '../../repository/nathurephotorepository.dart';
+import '../../repository/peoplephotorepository.dart';
+import '../../repository/topphotorepository.dart';
 
 class Homebloc extends Bloc<IHomeEvent, IHomeState> {
-  final Dio _dio = Dio(BaseOptions(baseUrl: "https://api.pexels.com/v1/"));
-  List<Photo> allwallpaper = [];
-  List<Photo> topwallpaper = [];
-  List<Photo> junglewallpaper = [];
-
+  final IAllPhotoRepository _repository = locator.get();
+  final ITopPhotoRepository _toprepository = locator.get();
+  final INathurePhotoRepository _naturerepository = locator.get();
+  final IAnimalPhotoRepository _animalrepository = locator.get();
+  final IPeoplePhotoRepository _peoplerepository = locator.get();
   Homebloc() : super(LoadHomeState()) {
+    Either<String, Map> allresponse = right({});
+    Either<String, Map> topresponse = right({});
+    Either<String, Map> natureresponse = right({});
+    Either<String, Map> animalresponse = right({});
+    Either<String, Map> peopleresponse = right({});
+
     on<HomeEvent>((event, emit) async {
       emit(LoadHomeState());
       try {
-        await getallwallpaper();
-        emit(HomeState(allwallpaper, topwallpaper, junglewallpaper));
-        await gettopwallpaper();
-        emit(HomeState(allwallpaper, topwallpaper, junglewallpaper));
-        await getjunglewallpaper();
-        emit(HomeState(allwallpaper, topwallpaper, junglewallpaper));
+        allresponse = await _repository.getphotorepository();
+        Future.delayed(const Duration(seconds: 3));
+        topresponse = await _toprepository.getphotorepository();
+        Future.delayed(const Duration(seconds: 3));
+        natureresponse = await _naturerepository.getphotorepository();
+        Future.delayed(const Duration(seconds: 3));
+        animalresponse = await _animalrepository.getphotorepository();
+        Future.delayed(const Duration(seconds: 3));
+        peopleresponse = await _peoplerepository.getphotorepository();
+        emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+            peopleresponse));
       } catch (ex) {
-        print("error error error error ");
+        emit(ErrorHomeState());
       }
     });
-  }
-  Future<void> gettopwallpaper() async {
-    try {
-      var response = await _dio.get("popular",
-          options: Options(headers: {
-            "Authorization":
-                "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
-          }));
-      if (response.statusCode == 200) {
-        int curentpage = response.data['page'];
-        int totalpage = response.data['per_page'];
-        try {
-          response = await _dio.get("popular",
-              queryParameters: {"page": 1, "per_page": totalpage},
-              options: Options(headers: {
-                "Authorization":
-                    "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
-              }));
-          if (response.statusCode == 200) {
-            topwallpaper.addAll(response.data['photos']
-                .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
-                .toList());
-          } else {}
-        } on DioException catch (ex) {
-          print(' secound Error fetching photos: ${ex.message}');
-          print('Error fetching photos: ${ex.message}');
-        }
-      }
-    } on DioException catch (ex) {
-      print(' first Error fetching photos: ${ex.message}');
-      print('Error fetching photos: ${ex.message}');
-    }
-  }
-
-  Future<void> getallwallpaper() async {
-    try {
-      var response = await _dio.get("curated",
-          options: Options(headers: {
-            "Authorization":
-                "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
-          }));
-      if (response.statusCode == 200) {
-        int curentpage = response.data['page'];
-        int totalpage = response.data['per_page'];
-        try {
-          response = await _dio.get("curated",
-              queryParameters: {"page": 1, "per_page": totalpage},
-              options: Options(headers: {
-                "Authorization":
-                    "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
-              }));
-          if (response.statusCode == 200) {
-            allwallpaper.addAll(response.data['photos']
-                .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
-                .toList());
-          } else {}
-        } on DioException catch (ex) {
-          print(' secound Error fetching photos: ${ex.message}');
-          print('Error fetching photos: ${ex.message}');
-        }
-      }
-    } on DioException catch (ex) {
-      print(' first Error fetching photos: ${ex.message}');
-      print('Error fetching photos: ${ex.message}');
-    }
-  }
-
-  Future<void> getjunglewallpaper() async {
-    try {
-      var response = await _dio.get("search",
-          queryParameters: {
-            "query": "Nature",
-          },
-          options: Options(headers: {
-            "Authorization":
-                "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
-          }));
-      if (response.statusCode == 200) {
-        int curentpage = response.data['page'];
-        int totalpage = response.data['per_page'];
-        try {
-          response = await _dio.get("search",
-              queryParameters: {
-                "query": "Nature",
-                "page": 1,
-                "per_page": totalpage,
-              },
-              options: Options(headers: {
-                "Authorization":
-                    "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
-              }));
-          if (response.statusCode == 200) {
-            junglewallpaper.addAll(response.data['photos']
-                .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
-                .toList());
-          } else {}
-        } on DioException catch (ex) {
-          print(' secound Error fetching photos: ${ex.message}');
-          print('Error fetching photos: ${ex.message}');
-        }
-      }
-    } on DioException catch (ex) {
-      print(' first Error fetching photos: ${ex.message}');
-      print('Error fetching photos: ${ex.message}');
-    }
+    on<HomeAllPhotoEvent>((event, emit) async {
+      allresponse = await _repository.getphotorepository();
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
+    });
+    on<HomeTopPhotoEvent>((event, emit) async {
+      topresponse = await _toprepository.getphotorepository();
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
+    });
+    on<HomeNaturePhotoEvent>((event, emit) async {
+      natureresponse = await _naturerepository.getphotorepository();
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
+    });
+    on<HomeAnimalPhotoEvent>((event, emit) async {
+      animalresponse = await _animalrepository.getphotorepository();
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
+    });
+    on<HomePeoplePhotoEvent>((event, emit) async {
+      peopleresponse = await _peoplerepository.getphotorepository();
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
+    });
   }
 }

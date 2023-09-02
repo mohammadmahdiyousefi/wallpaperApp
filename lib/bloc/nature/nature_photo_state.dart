@@ -4,13 +4,14 @@ abstract class INaturePhotoState {}
 
 class LoadNaturePhotoState extends INaturePhotoState {}
 
-class ErrorNaturePhotoState extends INaturePhotoState {}
+class ErrorNaturePhotoState extends INaturePhotoState {
+  int curentpage;
+  ErrorNaturePhotoState(this.curentpage);
+}
 
 class NaturePhotoState extends INaturePhotoState {
-  List<Photo> wallpaper;
   List<Photo> allwallpaper;
-  bool isloaded;
-  bool lodingsate;
-  NaturePhotoState(
-      this.wallpaper, this.allwallpaper, this.isloaded, this.lodingsate);
+  int totalpage;
+  int curentpage;
+  NaturePhotoState(this.allwallpaper, this.totalpage, this.curentpage);
 }

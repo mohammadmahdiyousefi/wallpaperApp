@@ -4,13 +4,14 @@ abstract class IAnimalPhotoState {}
 
 class LoadAnimalPhotoState extends IAnimalPhotoState {}
 
-class ErrorAnimalPhotoState extends IAnimalPhotoState {}
+class ErrorAnimalPhotoState extends IAnimalPhotoState {
+  int curentpage;
+  ErrorAnimalPhotoState(this.curentpage);
+}
 
 class AnimalPhotoState extends IAnimalPhotoState {
-  List<Photo> wallpaper;
   List<Photo> allwallpaper;
-  bool isloaded;
-  bool lodingsate;
-  AnimalPhotoState(
-      this.wallpaper, this.allwallpaper, this.isloaded, this.lodingsate);
+  int totalpage;
+  int curentpage;
+  AnimalPhotoState(this.allwallpaper, this.totalpage, this.curentpage);
 }

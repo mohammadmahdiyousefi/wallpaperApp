@@ -3,21 +3,21 @@ import 'package:dio/dio.dart';
 import '../../di/di.dart';
 import '../../model/photo.dart';
 
-abstract class IAllPhotoDataSourc {
+abstract class IPeoplePhotoDataSourc {
   Future<Map> getwallpaperdatasource();
   Future<Map> getalllwallpaperdatasource(int curentpage);
 }
 
-class AllPhotoDataSourc extends IAllPhotoDataSourc {
+class PeoplePhotoDataSourc extends IPeoplePhotoDataSourc {
   final Dio _dio = locator.get();
   @override
   Future<Map> getwallpaperdatasource() async {
-    // TODO: implement wallpaper
     try {
       var response = await _dio.get(
-        "curated",
+        "search",
         queryParameters: {
           "page": 1,
+          "query": "People",
         },
       );
       return response.data;
@@ -30,9 +30,10 @@ class AllPhotoDataSourc extends IAllPhotoDataSourc {
   Future<Map> getalllwallpaperdatasource(int curentpage) async {
     try {
       var response = await _dio.get(
-        "curated",
+        "search",
         queryParameters: {
           "page": curentpage,
+          "query": "People",
         },
       );
       return response.data;

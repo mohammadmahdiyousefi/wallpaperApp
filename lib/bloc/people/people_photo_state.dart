@@ -4,13 +4,14 @@ abstract class IPeoplePhotoState {}
 
 class LoadPeoplePhotoState extends IPeoplePhotoState {}
 
-class ErrorPeoplePhotoState extends IPeoplePhotoState {}
+class ErrorPeoplePhotoState extends IPeoplePhotoState {
+  int curentpage;
+  ErrorPeoplePhotoState(this.curentpage);
+}
 
 class PeoplePhotoState extends IPeoplePhotoState {
-  List<Photo> wallpaper;
   List<Photo> allwallpaper;
-  bool isloaded;
-  bool lodingsate;
-  PeoplePhotoState(
-      this.wallpaper, this.allwallpaper, this.isloaded, this.lodingsate);
+  int totalpage;
+  int curentpage;
+  PeoplePhotoState(this.allwallpaper, this.totalpage, this.curentpage);
 }

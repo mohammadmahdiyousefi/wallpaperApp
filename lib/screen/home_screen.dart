@@ -1,31 +1,23 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer_effect/shimmer_effect.dart';
 import 'package:wallpaper/bloc/allphotobloc/all_photo_bloc.dart';
 import 'package:wallpaper/bloc/allphotobloc/all_photo_event.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_state.dart';
 import 'package:wallpaper/bloc/animal/animal_photo_bloc.dart';
 import 'package:wallpaper/bloc/animal/animal_photo_event.dart';
-import 'package:wallpaper/bloc/animal/animal_photo_state.dart';
 import 'package:wallpaper/bloc/homepagebloc/homepage_bloc.dart';
 import 'package:wallpaper/bloc/homepagebloc/homepage_event.dart';
 import 'package:wallpaper/bloc/homepagebloc/homepage_state.dart';
 import 'package:wallpaper/bloc/nature/nature_photo_bloc.dart';
 import 'package:wallpaper/bloc/nature/nature_photo_event.dart';
-import 'package:wallpaper/bloc/nature/nature_photo_state.dart';
 import 'package:wallpaper/bloc/people/people_photo_bloc.dart';
-import 'package:wallpaper/bloc/people/people_photo_state.dart';
 import 'package:wallpaper/bloc/topphoto/top_photo_bloc.dart';
 import 'package:wallpaper/bloc/topphoto/top_photo_event.dart';
-import 'package:wallpaper/bloc/topphoto/top_photo_state.dart';
 import 'package:wallpaper/screen/all_photo_screen.dart';
-import 'package:wallpaper/screen/showphoto.dart';
 import 'package:wallpaper/widget/loadimage.dart';
-
 import '../bloc/people/people_photo_event.dart';
 import '../model/photo.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   HomePage({super.key});
   List<Photo> allphoto = [];
@@ -54,7 +46,7 @@ class HomePage extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 5, top: 10, bottom: 10, right: 5),
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
                             decoration: BoxDecoration(
                                 color: Theme.of(context)
                                     .colorScheme
@@ -68,7 +60,7 @@ class HomePage extends StatelessWidget {
                                   elevation: 0,
                                   shadowColor: Colors.transparent,
                                   backgroundColor: Colors.transparent),
-                              child: navgationtoallphoto(
+                              child: Navgationtoallphoto(
                                 titel: "All",
                               ),
                             ),
@@ -105,7 +97,7 @@ class HomePage extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             left: 5, top: 10, bottom: 10, right: 5),
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                               color: Theme.of(context)
                                   .colorScheme
@@ -127,7 +119,7 @@ class HomePage extends StatelessWidget {
                                 },
                               ));
                             },
-                            child: navgationtoallphoto(
+                            child: Navgationtoallphoto(
                               titel: "All",
                             ),
                           ),
@@ -159,7 +151,7 @@ class HomePage extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 5, top: 10, bottom: 10, right: 5),
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
                             decoration: BoxDecoration(
                                 color: Theme.of(context)
                                     .colorScheme
@@ -173,7 +165,7 @@ class HomePage extends StatelessWidget {
                                   elevation: 0,
                                   shadowColor: Colors.transparent,
                                   backgroundColor: Colors.transparent),
-                              child: navgationtoallphoto(
+                              child: Navgationtoallphoto(
                                 titel: "Top",
                               ),
                             ),
@@ -210,7 +202,7 @@ class HomePage extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             left: 5, top: 10, bottom: 10, right: 5),
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                               color: Theme.of(context)
                                   .colorScheme
@@ -232,7 +224,7 @@ class HomePage extends StatelessWidget {
                                 },
                               ));
                             },
-                            child: navgationtoallphoto(
+                            child: Navgationtoallphoto(
                               titel: "Top",
                             ),
                           ),
@@ -264,7 +256,7 @@ class HomePage extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 5, top: 10, bottom: 10, right: 5),
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
                             decoration: BoxDecoration(
                                 color: Theme.of(context)
                                     .colorScheme
@@ -278,7 +270,7 @@ class HomePage extends StatelessWidget {
                                   elevation: 0,
                                   shadowColor: Colors.transparent,
                                   backgroundColor: Colors.transparent),
-                              child: navgationtoallphoto(
+                              child: Navgationtoallphoto(
                                 titel: "Nature",
                               ),
                             ),
@@ -315,7 +307,7 @@ class HomePage extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             left: 5, top: 10, bottom: 10, right: 5),
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                               color: Theme.of(context)
                                   .colorScheme
@@ -337,7 +329,7 @@ class HomePage extends StatelessWidget {
                                 },
                               ));
                             },
-                            child: navgationtoallphoto(
+                            child: Navgationtoallphoto(
                               titel: "Nature",
                             ),
                           ),
@@ -369,7 +361,7 @@ class HomePage extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 5, top: 10, bottom: 10, right: 5),
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
                             decoration: BoxDecoration(
                                 color: Theme.of(context)
                                     .colorScheme
@@ -383,7 +375,7 @@ class HomePage extends StatelessWidget {
                                   elevation: 0,
                                   shadowColor: Colors.transparent,
                                   backgroundColor: Colors.transparent),
-                              child: navgationtoallphoto(
+                              child: Navgationtoallphoto(
                                 titel: "Animal",
                               ),
                             ),
@@ -420,7 +412,7 @@ class HomePage extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             left: 5, top: 10, bottom: 10, right: 5),
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                               color: Theme.of(context)
                                   .colorScheme
@@ -442,7 +434,7 @@ class HomePage extends StatelessWidget {
                                 },
                               ));
                             },
-                            child: navgationtoallphoto(
+                            child: Navgationtoallphoto(
                               titel: "Animal",
                             ),
                           ),
@@ -474,7 +466,7 @@ class HomePage extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 5, top: 10, bottom: 10, right: 5),
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
                             decoration: BoxDecoration(
                                 color: Theme.of(context)
                                     .colorScheme
@@ -488,7 +480,7 @@ class HomePage extends StatelessWidget {
                                   elevation: 0,
                                   shadowColor: Colors.transparent,
                                   backgroundColor: Colors.transparent),
-                              child: navgationtoallphoto(
+                              child: Navgationtoallphoto(
                                 titel: "People",
                               ),
                             ),
@@ -525,7 +517,7 @@ class HomePage extends StatelessWidget {
                         padding: const EdgeInsets.only(
                             left: 5, top: 10, bottom: 10, right: 5),
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           decoration: BoxDecoration(
                               color: Theme.of(context)
                                   .colorScheme
@@ -547,7 +539,7 @@ class HomePage extends StatelessWidget {
                                 },
                               ));
                             },
-                            child: navgationtoallphoto(
+                            child: Navgationtoallphoto(
                               titel: "People",
                             ),
                           ),
@@ -599,8 +591,9 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class navgationtoallphoto extends StatelessWidget {
-  navgationtoallphoto({
+// ignore: must_be_immutable
+class Navgationtoallphoto extends StatelessWidget {
+  Navgationtoallphoto({
     super.key,
     this.titel = '',
   });

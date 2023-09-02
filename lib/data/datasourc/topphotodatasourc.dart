@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
-
 import '../../di/di.dart';
-import '../../model/photo.dart';
 
 abstract class ITopPhotoDataSourc {
   Future<Map> getwallpaperdatasource();

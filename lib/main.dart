@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:http/http.dart' as http;
 import 'package:wallpaper/bloc/allphotobloc/all_photo_bloc.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_state.dart';
 import 'package:wallpaper/bloc/animal/animal_photo_bloc.dart';
 import 'package:wallpaper/bloc/homepagebloc/homepage_bloc.dart';
 import 'package:wallpaper/bloc/nature/nature_photo_bloc.dart';
@@ -13,10 +9,8 @@ import 'package:wallpaper/bloc/people/people_photo_bloc.dart';
 import 'package:wallpaper/bloc/savephoto/save_photo_bloc.dart';
 import 'package:wallpaper/bloc/search/search_bloc.dart';
 import 'package:wallpaper/bloc/topphoto/top_photo_bloc.dart';
-import 'package:wallpaper/screen/all_photo_screen.dart';
 import 'package:wallpaper/screen/swith_page.dart';
 import 'package:wallpaper/theme/colors_schemes.dart';
-
 import 'di/di.dart';
 
 void main() async {
@@ -53,6 +47,7 @@ void main() async {
   ], child: MyApp()));
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   var box = Hive.box("theme");

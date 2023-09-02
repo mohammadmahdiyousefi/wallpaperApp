@@ -1,11 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:wallpaper/bloc/homepagebloc/homepage_event.dart';
 import 'package:wallpaper/bloc/homepagebloc/homepage_state.dart';
-
 import '../../di/di.dart';
-import '../../model/photo.dart';
 import '../../repository/allphotorepository.dart';
 import '../../repository/animalphotorepository.dart';
 import '../../repository/nathurephotorepository.dart';

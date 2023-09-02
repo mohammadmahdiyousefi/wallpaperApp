@@ -1,7 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-import '../../model/photo.dart';
-
 abstract class IHomeState {}
 
 class LoadHomeState extends IHomeState {}

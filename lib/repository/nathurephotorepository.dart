@@ -1,9 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:wallpaper/data/datasourc/allphotodatasourc.dart';
 import 'package:wallpaper/data/datasourc/naturephotodatasourc.dart';
 import 'package:wallpaper/di/di.dart';
-import 'package:wallpaper/model/photo.dart';
 
 abstract class INathurePhotoRepository {
   Future<Either<String, Map>> getphotorepository();

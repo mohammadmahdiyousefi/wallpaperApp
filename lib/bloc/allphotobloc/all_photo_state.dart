@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:wallpaper/model/photo.dart';
 
 abstract class IAllPhotoState {}

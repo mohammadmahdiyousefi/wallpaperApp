@@ -1,14 +1,6 @@
-import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_event.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_state.dart';
-import 'package:http/http.dart' as http;
 import 'package:wallpaper/bloc/nature/nature_photo_event.dart';
 import 'package:wallpaper/bloc/nature/nature_photo_state.dart';
-import 'package:wallpaper/bloc/topphoto/top_photo_event.dart';
-import 'package:wallpaper/bloc/topphoto/top_photo_state.dart';
 import 'package:wallpaper/model/photo.dart';
 import 'package:wallpaper/repository/nathurephotorepository.dart';
 

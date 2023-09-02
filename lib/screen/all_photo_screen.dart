@@ -1,10 +1,6 @@
-import 'dart:io';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shimmer_effect/shimmer_effect.dart';
 import 'package:wallpaper/bloc/allphotobloc/all_photo_bloc.dart';
 import 'package:wallpaper/bloc/allphotobloc/all_photo_event.dart';
@@ -21,17 +17,13 @@ import 'package:wallpaper/bloc/search/search_state.dart';
 import 'package:wallpaper/bloc/topphoto/top_photo_bloc.dart';
 import 'package:wallpaper/bloc/topphoto/top_photo_state.dart';
 import 'package:wallpaper/model/photo.dart';
-import 'package:wallpaper/screen/showphoto.dart';
-
 import '../bloc/animal/animal_photo_event.dart';
 import '../bloc/nature/nature_photo_event.dart';
 import '../bloc/people/people_photo_event.dart';
-import '../bloc/savephoto/save_photo_bloc.dart';
-import '../bloc/savephoto/save_photo_event.dart';
-import '../bloc/savephoto/save_photo_state.dart';
 import '../bloc/topphoto/top_photo_event.dart';
 import '../widget/loadimage.dart';
 
+// ignore: must_be_immutable
 class AllPhotoScreen extends StatelessWidget {
   AllPhotoScreen(this.status, {super.key});
   String status = '';
@@ -46,7 +38,7 @@ class AllPhotoScreen extends StatelessWidget {
             ? BlocBuilder<AllPhotoBloc, IAllPhotoState>(
                 builder: (context, state) {
                 if (state is AllPhotoState) {
-                  return finishload(
+                  return Finishload(
                       wallpaper: state.allwallpaper,
                       courentpage: state.curentpage,
                       totalpage: state.totalpage,
@@ -61,7 +53,7 @@ class AllPhotoScreen extends StatelessWidget {
                 ? BlocBuilder<NaturePhotoBloc, INaturePhotoState>(
                     builder: (context, state) {
                     if (state is NaturePhotoState) {
-                      return finishload(
+                      return Finishload(
                           wallpaper: state.allwallpaper,
                           courentpage: state.curentpage,
                           totalpage: state.totalpage,
@@ -76,7 +68,7 @@ class AllPhotoScreen extends StatelessWidget {
                     ? BlocBuilder<TopPhotoBloc, ITopPhotoState>(
                         builder: (context, state) {
                         if (state is TopPhotoState) {
-                          return finishload(
+                          return Finishload(
                             wallpaper: state.allwallpaper,
                             courentpage: state.curentpage,
                             totalpage: state.totalpage,
@@ -92,7 +84,7 @@ class AllPhotoScreen extends StatelessWidget {
                         ? BlocBuilder<AnimalPhotoBloc, IAnimalPhotoState>(
                             builder: (context, state) {
                             if (state is AnimalPhotoState) {
-                              return finishload(
+                              return Finishload(
                                   wallpaper: state.allwallpaper,
                                   courentpage: state.curentpage,
                                   totalpage: state.totalpage,
@@ -107,7 +99,7 @@ class AllPhotoScreen extends StatelessWidget {
                             ? BlocBuilder<PeoplePhotoBloc, IPeoplePhotoState>(
                                 builder: (context, state) {
                                 if (state is PeoplePhotoState) {
-                                  return finishload(
+                                  return Finishload(
                                       wallpaper: state.allwallpaper,
                                       courentpage: state.curentpage,
                                       totalpage: state.totalpage,
@@ -122,7 +114,7 @@ class AllPhotoScreen extends StatelessWidget {
                                 ? BlocBuilder<SearchBloc, ISearchState>(
                                     builder: (context, state) {
                                     if (state is SearchState) {
-                                      return finishload(
+                                      return Finishload(
                                         wallpaper: state.allwallpaper,
                                         courentpage: state.curentpage,
                                         totalpage: state.totalpage,
@@ -259,8 +251,9 @@ class errorload extends StatelessWidget {
   }
 }
 
-class finishload extends StatelessWidget {
-  finishload(
+// ignore: must_be_immutable
+class Finishload extends StatelessWidget {
+  Finishload(
       {super.key,
       required this.wallpaper,
       required this.courentpage,

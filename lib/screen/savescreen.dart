@@ -1,11 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer_effect/shimmer_effect.dart';
 import 'package:wallpaper/bloc/savephoto/save_photo_bloc.dart';
-import 'package:wallpaper/bloc/savephoto/save_photo_event.dart';
 import 'package:wallpaper/bloc/savephoto/save_photo_state.dart';
-import 'package:wallpaper/screen/showphoto.dart';
 import 'package:wallpaper/widget/loadimage.dart';
 
 class SavePhotoScreen extends StatelessWidget {
@@ -34,16 +30,16 @@ class SavePhotoScreen extends StatelessWidget {
               ],
             );
           } else if (state is LoadingSavePhotoState) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (state is EmpetySavePhotoState) {
-            return Center(
+            return const Center(
               child: Icon(
                 Icons.archive_outlined,
                 size: 40,
               ),
             );
           } else {
-            return Center(
+            return const Center(
               child: Icon(Icons.bookmark),
             );
           }

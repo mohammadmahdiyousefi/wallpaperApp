@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
-
 import '../../di/di.dart';
-import '../../model/photo.dart';
 
 abstract class INathurePhotoDataSourc {
   Future<Map> getwallpaperdatasource();

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer_effect/shimmer_effect.dart';
 import 'package:wallpaper/bloc/search/search_bloc.dart';
 import 'package:wallpaper/bloc/search/search_event.dart';
 import 'package:wallpaper/bloc/search/search_state.dart';
-
 import '../model/photo.dart';
 import '../widget/loadimage.dart';
-import 'all_photo_screen.dart';
 
+// ignore: must_be_immutable
 class SearchScreen extends StatelessWidget {
   SearchScreen({super.key});
   TextEditingController control = TextEditingController();
@@ -117,7 +115,7 @@ class SearchScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else {
-            return Center(
+            return const Center(
               child: Icon(
                 Icons.search,
                 size: 30,

@@ -1,15 +1,9 @@
-import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:wallpaper/bloc/allphotobloc/all_photo_event.dart';
 import 'package:wallpaper/bloc/allphotobloc/all_photo_state.dart';
-import 'package:http/http.dart' as http;
 import 'package:wallpaper/di/di.dart';
 import 'package:wallpaper/model/photo.dart';
 import 'package:wallpaper/repository/allphotorepository.dart';
-import 'package:wallpaper/screen/all_photo_screen.dart';
 
 class AllPhotoBloc extends Bloc<IAllPhotoEvent, IAllPhotoState> {
   int curentpage = 0;

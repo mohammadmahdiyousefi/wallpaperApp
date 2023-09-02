@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:wallpaper/bloc/animal/animal_photo_state.dart';
 import 'package:wallpaper/data/datasourc/allphotodatasourc.dart';
 import 'package:wallpaper/data/datasourc/animalphotodatasourc.dart';
 import 'package:wallpaper/data/datasourc/naturephotodatasourc.dart';
@@ -20,17 +19,21 @@ Future<void> getItInit() async {
       BaseOptions(baseUrl: 'https://api.pexels.com/v1/', headers: {
     "Authorization": "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
   })));
+
   //datasource
+
   locator.registerFactory<IAllPhotoDataSourc>(() => AllPhotoDataSourc());
   locator.registerFactory<ITopPhotoDataSourc>(() => TopPhotoDataSourc());
   locator
       .registerFactory<INathurePhotoDataSourc>(() => NathurePhotoDataSourc());
   locator.registerFactory<IAnimalPhotoDataSourc>(() => AnimalPhotoDataSourc());
-
   locator.registerFactory<IPeoplePhotoDataSourc>(() => PeoplePhotoDataSourc());
   locator.registerFactory<ISearchPhotoDataSourc>(() => SearchPhotoDataSourc());
+
   // locator.registerFactory<IAllPhotoDataSourc>(() => AllPhotoDataSourc());
+
   //repository
+
   locator.registerFactory<IAllPhotoRepository>(() => AllPhotoRepository());
   locator.registerFactory<ITopPhotoRepository>(() => TopPhotoRepository());
   locator

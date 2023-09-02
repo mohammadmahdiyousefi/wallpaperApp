@@ -4,14 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:shimmer_effect/shimmer_effect.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:wallpaper/model/photo.dart';
-
 import '../bloc/savephoto/save_photo_bloc.dart';
 import '../bloc/savephoto/save_photo_event.dart';
 import '../screen/showphoto.dart';
 import 'download_widget.dart';
 
+// ignore: must_be_immutable
 class LoadeImage extends StatelessWidget {
   LoadeImage(this.image, {super.key});
   Photo image;

@@ -5,16 +5,12 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shimmer_effect/shimmer_effect.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import 'package:wallpaper/model/photo.dart';
-
 import '../bloc/savephoto/save_photo_bloc.dart';
 import '../bloc/savephoto/save_photo_event.dart';
-import '../bloc/savephoto/save_photo_state.dart';
 import '../widget/download_widget.dart';
-import '../widget/photo_info.dart';
 
+// ignore: must_be_immutable
 class ShowPhotoScreen extends StatefulWidget {
   ShowPhotoScreen({super.key, required this.image});
   Photo image;
@@ -37,7 +33,7 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
             onTap: () {
               Navigator.of(context).pop();
             },
-            child: Icon(Icons.arrow_back_ios)),
+            child: const Icon(Icons.arrow_back_ios)),
       ),
       body: SafeArea(
         child: Stack(
@@ -74,7 +70,7 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                   ),
                                 ),
                                 errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
+                                    const Icon(Icons.error),
                               ),
                             ),
                           ),
@@ -97,7 +93,7 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                       await Share.shareUri(Uri.parse(
                                           widget.image.src!.original!));
                                     },
-                                    child: Icon(Icons.share),
+                                    child: const Icon(Icons.share),
                                   ),
                                 ),
                                 Padding(
@@ -107,7 +103,7 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(8)),
-                                          minimumSize: Size(200, 40),
+                                          minimumSize: const Size(200, 40),
                                           backgroundColor: Colors.green),
                                       onPressed: () async {
                                         // await launchUrl(Uri.parse(image.src!.original!),
@@ -115,7 +111,7 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                         downloadbottomshet(
                                             context, controller, widget.image);
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         "Download",
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 18),
@@ -159,8 +155,9 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                             child: Container(
                               height: 50,
                               width: double.infinity,
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              margin: EdgeInsets.symmetric(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
+                              margin: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 5),
                               decoration: BoxDecoration(
                                   color: Theme.of(context)
@@ -172,9 +169,14 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   isvisble == true
-                                      ? Icon(Icons.keyboard_arrow_down)
-                                      : Icon(Icons.keyboard_arrow_left),
-                                  Text("Info")
+                                      ? const Icon(Icons.keyboard_arrow_down)
+                                      : const Icon(Icons.keyboard_arrow_left),
+                                  const Text(
+                                    "Info",
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600),
+                                  )
                                 ],
                               ),
                             ),
@@ -184,8 +186,9 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                             child: Container(
                                 // height: 250,
                                 width: double.infinity,
-                                padding: EdgeInsets.symmetric(horizontal: 15),
-                                margin: EdgeInsets.symmetric(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                margin: const EdgeInsets.symmetric(
                                     horizontal: 25, vertical: 5),
                                 decoration: BoxDecoration(
                                     color: Theme.of(context)
@@ -201,61 +204,100 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            "photographer : ",
-                                          ),
-                                          Text(
-                                            widget.image.photographer!,
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400),
-                                          ),
+                                          const Text("photographer : ",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600)),
+                                          Text(widget.image.photographer!,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge),
                                         ],
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
                                       ),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
+                                          const Text("photographerId : ",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600)),
                                           Text(
-                                            "photographerId : ",
-                                          ),
-                                          Text(
-                                            " ${widget.image.photographerId}",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400),
-                                          ),
+                                              " ${widget.image.photographerId}",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge),
                                         ],
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
                                       ),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            "height : ",
-                                          ),
-                                          Text(
-                                            " ${widget.image.height}",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400),
-                                          ),
+                                          const Text("height : ",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600)),
+                                          Text(" ${widget.image.height}",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge),
                                         ],
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
                                       ),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            "width : ",
-                                          ),
-                                          Text(
-                                            " ${widget.image.width}",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400),
-                                          ),
+                                          const Text("width : ",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600)),
+                                          Text(" ${widget.image.width}",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge),
                                         ],
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          const Text("avgColor : ",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600)),
+                                          Text(" ${widget.image.avgColor}",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge),
+                                          const SizedBox(
+                                            width: 15,
+                                          ),
+                                          Container(
+                                            height: 20,
+                                            width: 20,
+                                            decoration: BoxDecoration(
+                                                color: Color(int.parse(
+                                                    "ff${widget.image.avgColor!.substring(1)}",
+                                                    radix: 16)),
+                                                borderRadius:
+                                                    BorderRadius.circular(3)),
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -263,22 +305,21 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            "url : ",
-                                          ),
+                                          const Text("url : ",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600)),
                                           SizedBox(
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.6,
+                                                0.68,
                                             child: SelectableText(
-                                              " ${widget.image.url}",
-                                              maxLines: 6,
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                            ),
+                                                " ${widget.image.url}",
+                                                maxLines: 6,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .labelLarge),
                                           ),
                                         ],
                                       ),
@@ -286,30 +327,12 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                   ),
                                 )),
                           ),
-                          SizedBox(
-                            height: 100,
+                          const SizedBox(
+                            height: 30,
                           )
                         ],
                       ),
                     ))),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: ElevatedButton(
-            //       style: ElevatedButton.styleFrom(
-            //           shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(8)),
-            //           minimumSize: Size(200, 50),
-            //           backgroundColor: Colors.green),
-            //       onPressed: () async {
-            //         // await launchUrl(Uri.parse(image.src!.original!),
-            //         //     mode: LaunchMode.externalNonBrowserApplication);
-            //         downloadbottomshet(context, controller, widget.image);
-            //       },
-            //       child: Text(
-            //         "Download",
-            //         style: TextStyle(color: Colors.white, fontSize: 18),
-            //       )),
-            // ),
           ],
         ),
       ),

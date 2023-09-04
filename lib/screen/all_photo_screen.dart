@@ -110,24 +110,21 @@ class AllPhotoScreen extends StatelessWidget {
                                   return const lodinload();
                                 }
                               })
-                            : status == "Allresult"
-                                ? BlocBuilder<SearchBloc, ISearchState>(
-                                    builder: (context, state) {
-                                    if (state is SearchState) {
-                                      return Finishload(
-                                        wallpaper: state.allwallpaper,
-                                        courentpage: state.curentpage,
-                                        totalpage: state.totalpage,
-                                        status: "Allresult",
-                                      );
-                                    } else if (state is ErrorSearchState) {
-                                      return errorload(
-                                          "search", state.curentpage);
-                                    } else {
-                                      return const lodinload();
-                                    }
-                                  })
-                                : Container());
+                            : BlocBuilder<SearchBloc, ISearchState>(
+                                builder: (context, state) {
+                                if (state is SearchState) {
+                                  return Finishload(
+                                    wallpaper: state.allwallpaper,
+                                    courentpage: state.curentpage,
+                                    totalpage: state.totalpage,
+                                    status: status,
+                                  );
+                                } else if (state is ErrorSearchState) {
+                                  return errorload("search", state.curentpage);
+                                } else {
+                                  return const lodinload();
+                                }
+                              }));
   }
 }
 
@@ -297,7 +294,7 @@ class Finishload extends StatelessWidget {
                     } else if (status == "Animal") {
                       BlocProvider.of<AnimalPhotoBloc>(context)
                           .add(LoadAllAnimalPhotoEvent(index + 1));
-                    } else if (status == "Allresult") {
+                    } else {
                       BlocProvider.of<SearchBloc>(context)
                           .add(LoadAllSearchEventEvent(index + 1));
                     }

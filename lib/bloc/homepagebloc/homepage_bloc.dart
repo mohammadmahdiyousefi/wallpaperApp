@@ -26,13 +26,13 @@ class Homebloc extends Bloc<IHomeEvent, IHomeState> {
       emit(LoadHomeState());
       try {
         allresponse = await _repository.getphotorepository();
-        Future.delayed(const Duration(seconds: 3));
+        Future.delayed(const Duration(seconds: 1));
         topresponse = await _toprepository.getphotorepository();
-        Future.delayed(const Duration(seconds: 3));
+        Future.delayed(const Duration(seconds: 1));
         natureresponse = await _naturerepository.getphotorepository();
-        Future.delayed(const Duration(seconds: 3));
+        Future.delayed(const Duration(seconds: 1));
         animalresponse = await _animalrepository.getphotorepository();
-        Future.delayed(const Duration(seconds: 3));
+        Future.delayed(const Duration(seconds: 1));
         peopleresponse = await _peoplerepository.getphotorepository();
         emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
             peopleresponse));

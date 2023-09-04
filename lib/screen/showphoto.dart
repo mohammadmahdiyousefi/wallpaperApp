@@ -239,6 +239,26 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
+                                          const Text("id : ",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600)),
+                                          Text(widget.image.id.toString(),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge),
+                                          const SizedBox(
+                                            width: 15,
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
                                           const Text("height : ",
                                               style: TextStyle(
                                                   fontSize: 14,
@@ -313,7 +333,7 @@ class _ShowPhotoScreenState extends State<ShowPhotoScreen> {
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.68,
+                                                0.66,
                                             child: SelectableText(
                                                 " ${widget.image.url}",
                                                 maxLines: 6,

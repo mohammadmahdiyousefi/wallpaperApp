@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:wallpaper/di/di.dart';
-
 import '../data/datasourc/searchdatasourc.dart';
 
 abstract class ISearchPhotoRepository {
@@ -14,7 +13,7 @@ class SearchPhotoRepository extends ISearchPhotoRepository {
   @override
   Future<Either<String, Map>> getphotorepository(String titel) async {
     try {
-      var response = await _datasourc.getwallpaperdatasource(titel);
+      var response = await _datasourc.getphotodatasource(titel);
       return right(response);
     } on DioException catch (ex) {
       return left(ex.message!);
@@ -24,7 +23,7 @@ class SearchPhotoRepository extends ISearchPhotoRepository {
   @override
   Future<Either<String, Map>> getallphotorepository(int courentpage) async {
     try {
-      var response = await _datasourc.getalllwallpaperdatasource(courentpage);
+      var response = await _datasourc.getalllphotodatasource(courentpage);
       return right(response);
     } on DioException catch (ex) {
       return left(ex.message!);

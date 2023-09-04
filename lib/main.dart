@@ -8,7 +8,10 @@ import 'package:wallpaper/bloc/nature/nature_photo_bloc.dart';
 import 'package:wallpaper/bloc/people/people_photo_bloc.dart';
 import 'package:wallpaper/bloc/savephoto/save_photo_bloc.dart';
 import 'package:wallpaper/bloc/search/search_bloc.dart';
+import 'package:wallpaper/bloc/splashbloc/splash_bloc.dart';
+import 'package:wallpaper/bloc/splashbloc/splash_event.dart';
 import 'package:wallpaper/bloc/topphoto/top_photo_bloc.dart';
+import 'package:wallpaper/screen/splashscreen.dart';
 import 'package:wallpaper/screen/swith_page.dart';
 import 'package:wallpaper/theme/colors_schemes.dart';
 import 'di/di.dart';
@@ -19,6 +22,7 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('photo');
   await Hive.openBox('theme');
+  await Hive.openBox('recentsearch');
   runApp(MultiBlocProvider(providers: [
     BlocProvider(create: (context) {
       return AllPhotoBloc();
@@ -43,6 +47,9 @@ void main() async {
     }),
     BlocProvider(create: (context) {
       return SearchBloc();
+    }),
+    BlocProvider(create: (context) {
+      return SplashBloc();
     })
   ], child: MyApp()));
 }
@@ -54,20 +61,39 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<SplashBloc>(context).add(SplashEvent());
     return ValueListenableBuilder(
-        valueListenable: box.listenable(),
-        builder: (context, value, child) {
-          return MaterialApp(
-            themeAnimationDuration: const Duration(seconds: 0),
-            debugShowCheckedModeBanner: false,
-            themeMode: value.get("mode", defaultValue: false) == true
-                ? ThemeMode.dark
-                : ThemeMode.light,
-            theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-            darkTheme:
-                ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-            home: const SwithPage(),
-          );
-        });
+      valueListenable: box.listenable(),
+      builder: (context, value, child) {
+        return MaterialApp(
+          themeAnimationDuration: const Duration(seconds: 0),
+          debugShowCheckedModeBanner: false,
+          themeMode: value.get("mode", defaultValue: false) == true
+              ? ThemeMode.dark
+              : ThemeMode.light,
+          theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+          darkTheme:
+              ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+          initialRoute: '/splash',
+          routes: {
+            '/splash': (context) => const SplashScreen(), // مسیر Splash Screen
+            '/home': (context) => const SwithPage(), // مسیر Home Screen اصلی
+          },
+          // home: BlocBuilder<SplashBloc, ISplashState>(
+          //     builder: (context, state) {
+          //   return AnimatedSplashScreen(
+          //     disableNavigation:
+          //         state is SplashState ? !state.conection : true,
+          //     backgroundColor: Theme.of(context).colorScheme.onBackground,
+          //     splashIconSize: double.infinity,
+          //     duration: 0,
+          //     splash: const SplashScreen(),
+          //     nextScreen: const SwithPage(),
+          //     splashTransition: SplashTransition.decoratedBoxTransition,
+          //   );
+          // })
+        );
+      },
+    );
   }
 }

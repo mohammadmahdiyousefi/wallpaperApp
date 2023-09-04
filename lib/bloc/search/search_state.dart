@@ -3,12 +3,10 @@ import '../../model/photo.dart';
 abstract class ISearchState {}
 
 class SearchState extends ISearchState {
-  List<Photo> wallpaper;
   List<Photo> allwallpaper;
   int totalpage;
   int curentpage;
-  SearchState(
-      this.wallpaper, this.allwallpaper, this.totalpage, this.curentpage);
+  SearchState(this.allwallpaper, this.totalpage, this.curentpage);
 }
 
 class LoadSearchState extends ISearchState {}

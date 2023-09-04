@@ -2,14 +2,14 @@ import 'package:dio/dio.dart';
 import '../../di/di.dart';
 
 abstract class IAnimalPhotoDataSourc {
-  Future<Map> getwallpaperdatasource();
-  Future<Map> getalllwallpaperdatasource(int curentpage);
+  Future<Map> getphotodatasource();
+  Future<Map> getalllphotodatasource(int curentpage);
 }
 
 class AnimalPhotoDataSourc extends IAnimalPhotoDataSourc {
   final Dio _dio = locator.get();
   @override
-  Future<Map> getwallpaperdatasource() async {
+  Future<Map> getphotodatasource() async {
     try {
       var response = await _dio.get(
         "search",
@@ -25,7 +25,7 @@ class AnimalPhotoDataSourc extends IAnimalPhotoDataSourc {
   }
 
   @override
-  Future<Map> getalllwallpaperdatasource(int curentpage) async {
+  Future<Map> getalllphotodatasource(int curentpage) async {
     try {
       var response = await _dio.get(
         "search",

@@ -18,7 +18,6 @@ class TopPhotoBloc extends Bloc<ITopPhotoEvent, ITopPhotoState> {
       emit(LoadTopPhotoState());
       allwallpaper.clear();
       var response = await _repository.getallphotorepository(event.number);
-
       response.fold((l) {
         emit(ErrorTopPhotoState(event.number));
         return 0;
@@ -31,32 +30,6 @@ class TopPhotoBloc extends Bloc<ITopPhotoEvent, ITopPhotoState> {
         emit(TopPhotoState(allwallpaper, totalpage, curentpage));
         return 0;
       });
-      //   emit(TopPhotoState(wallpaper, allwallpaper, true, true));
-      //   for (curentpage; curentpage <= totalpage; curentpage++) {
-      //     try {
-      //       var response = await _dio.get("popular",
-      //           queryParameters: {"page": curentpage, "per_page": totalpage},
-      //           options: Options(headers: {
-      //             "Authorization":
-      //                 "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
-      //           }));
-      //       if (response.statusCode == 200) {
-      //         allwallpaper.addAll(response.data['photos']
-      //             .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
-      //             .toList());
-      //         emit(TopPhotoState(wallpaper, allwallpaper, true, false));
-      //       } else {
-      //         emit(TopPhotoState(wallpaper, allwallpaper, false, false));
-      //       }
-      //     } on DioException catch (ex) {
-      //       emit(ErrorTopPhotoState());
-      //       print(' secound Error fetching photos: ${ex.message}');
-      //       print('Error fetching photos: ${ex.message}');
-      //       return;
-      //     }
-      //     await Future.delayed(Duration(seconds: 3));
-      //   }
-      //   emit(TopPhotoState(wallpaper, allwallpaper, false, false));
     });
   }
 }

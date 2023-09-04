@@ -29,36 +29,6 @@ class NaturePhotoBloc extends Bloc<INaturePhotoEvent, INaturePhotoState> {
         emit(NaturePhotoState(allwallpaper, totalpage, curentpage));
         return 0;
       });
-      // emit(NaturePhotoState(wallpaper, allwallpaper, true, true));
-      // for (curentpage; curentpage <= totalpage; curentpage++) {
-      //   try {
-      //     var response = await _dio.get("search",
-      //         queryParameters: {
-      //           "query": "Nature",
-      //           "page": curentpage,
-      //           "per_page": totalpage
-      //         },
-      //         options: Options(headers: {
-      //           "Authorization":
-      //               "i2xCopa0wQh8155oyRo30e9HFcdnmOSDv7YDwLcnDr4Hs8XcfjCIBl8m"
-      //         }));
-      //     if (response.statusCode == 200) {
-      //       allwallpaper.addAll(response.data['photos']
-      //           .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
-      //           .toList());
-      //       emit(NaturePhotoState(wallpaper, allwallpaper, true, false));
-      //     } else {
-      //       emit(NaturePhotoState(wallpaper, allwallpaper, false, false));
-      //     }
-      //   } on DioException catch (ex) {
-      //     emit(ErrorNaturePhotoState());
-      //     print(' secound Error fetching photos: ${ex.message}');
-      //     print('Error fetching photos: ${ex.message}');
-      //     return;
-      //   }
-      //   await Future.delayed(Duration(seconds: 3));
-      // }
-      // emit(NaturePhotoState(wallpaper, allwallpaper, false, false));
     });
   }
 }

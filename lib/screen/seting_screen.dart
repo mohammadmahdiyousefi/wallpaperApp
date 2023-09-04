@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SetingScreen extends StatelessWidget {
+class SetingScreen extends StatefulWidget {
   const SetingScreen({super.key});
 
+  @override
+  State<SetingScreen> createState() => _SetingScreenState();
+}
+
+class _SetingScreenState extends State<SetingScreen> {
+  String titel = "High";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
             body: Column(children: [
+      const Divider(),
       Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.secondaryContainer,
             borderRadius: BorderRadius.circular(10)),
@@ -31,7 +38,7 @@ class SetingScreen extends StatelessWidget {
                   "Dark Theme",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                Spacer(),
+                const Spacer(),
                 Switch(
                   value: getthememode(),
                   onChanged: (value) {
@@ -41,15 +48,60 @@ class SetingScreen extends StatelessWidget {
               ],
             )),
       ),
-      Spacer(),
-      Divider(),
+      const Divider(),
+      Container(
+        height: 48,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 25),
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.secondaryContainer,
+            borderRadius: BorderRadius.circular(8)),
+        child: Row(
+          children: [
+            Text(
+              "Photo Quality",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const Spacer(),
+            PopupMenuButton(
+              onSelected: (value) {
+                setState(() {
+                  titel = value;
+                });
+              },
+              shadowColor: Colors.transparent,
+              position: PopupMenuPosition.under,
+              child: Text(titel),
+              itemBuilder: (context) {
+                return const [
+                  PopupMenuItem(
+                    child: Text("High"),
+                    value: "High",
+                  ),
+                  PopupMenuItem(
+                    child: Text("medium"),
+                    value: "medium",
+                  ),
+                  PopupMenuItem(
+                    child: Text("Low"),
+                    value: "Low",
+                  )
+                ];
+              },
+            ),
+          ],
+        ),
+      ),
+      const Divider(),
+      const Spacer(),
+      const Divider(),
       Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
               height: 40,
               width: 40,
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   borderRadius: BorderRadius.circular(8)),
@@ -59,7 +111,7 @@ class SetingScreen extends StatelessWidget {
                       Uri.parse("https://github.com/mohammadmahdiyousefi"),
                       mode: LaunchMode.externalNonBrowserApplication);
                 },
-                child: Image(
+                child: const Image(
                   image: AssetImage("images/Github-PNG.png"),
                   fit: BoxFit.contain,
                 ),
@@ -68,7 +120,7 @@ class SetingScreen extends StatelessWidget {
             Container(
               height: 40,
               width: 40,
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   borderRadius: BorderRadius.circular(8)),
@@ -77,7 +129,7 @@ class SetingScreen extends StatelessWidget {
                   await launchUrl(Uri.parse("https://t.me/photo_fetch_pro"),
                       mode: LaunchMode.externalNonBrowserApplication);
                 },
-                child: Image(
+                child: const Image(
                   image: AssetImage("images/tlegram.png"),
                   fit: BoxFit.contain,
                 ),
@@ -86,17 +138,17 @@ class SetingScreen extends StatelessWidget {
             Container(
               height: 40,
               width: 40,
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   borderRadius: BorderRadius.circular(8)),
               child: GestureDetector(
                 onTap: () async {},
-                child: Icon(Icons.share),
+                child: const Icon(Icons.share),
               ),
             )
           ])),
-      Row(
+      const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("Made with  "),

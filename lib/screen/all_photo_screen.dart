@@ -136,75 +136,80 @@ class lodinload extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisExtent: 220),
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: Column(
-            children: [
-              Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  SizedBox(
-                      height: 200,
-                      width: 150,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: ShimmerEffect(
-                          baseColor: Colors.grey,
-                          highlightColor: Colors.white,
-                          child: Container(
-                            height: 200,
-                            width: 150,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      )),
-                  Container(
-                    width: 150,
-                    height: 35,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(106, 0, 0, 0),
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(10)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Row(children: [
-                        ShimmerEffect(
-                          baseColor: Colors.grey,
-                          highlightColor: Colors.white,
-                          child: Container(
-                            height: 10,
-                            width: 60,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.download_outlined,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        const Icon(
-                          Icons.bookmark_outline,
-                          color: Colors.white,
-                        ),
-                      ]),
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
-        );
-      },
+    return const Center(
+      child: CircularProgressIndicator(),
     );
+
+    //  GridView.builder(
+    //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    //       crossAxisCount: 2, mainAxisExtent: 220),
+    //   itemBuilder: (context, index) {
+    //     return Padding(
+    //       padding: const EdgeInsets.only(right: 10),
+    //       child:
+    //       Column(
+    //         children: [
+    //           Stack(
+    //             alignment: Alignment.bottomCenter,
+    //             children: [
+    //               SizedBox(
+    //                   height: 200,
+    //                   width: 150,
+    //                   child: ClipRRect(
+    //                     borderRadius: BorderRadius.circular(10),
+    //                     child: ShimmerEffect(
+    //                       baseColor: Colors.grey,
+    //                       highlightColor: Colors.white,
+    //                       child: Container(
+    //                         height: 200,
+    //                         width: 150,
+    //                         color: Colors.grey,
+    //                       ),
+    //                     ),
+    //                   )),
+    //               Container(
+    //                 width: 150,
+    //                 height: 35,
+    //                 decoration: const BoxDecoration(
+    //                   color: Color.fromARGB(106, 0, 0, 0),
+    //                   borderRadius: BorderRadius.only(
+    //                       bottomLeft: Radius.circular(10),
+    //                       bottomRight: Radius.circular(10)),
+    //                 ),
+    //                 child: Padding(
+    //                   padding: const EdgeInsets.symmetric(horizontal: 5),
+    //                   child: Row(children: [
+    //                     ShimmerEffect(
+    //                       baseColor: Colors.grey,
+    //                       highlightColor: Colors.white,
+    //                       child: Container(
+    //                         height: 10,
+    //                         width: 60,
+    //                         color: Colors.grey,
+    //                       ),
+    //                     ),
+    //                     const Spacer(),
+    //                     const Icon(
+    //                       Icons.download_outlined,
+    //                       color: Colors.white,
+    //                     ),
+    //                     const SizedBox(
+    //                       width: 6,
+    //                     ),
+    //                     const Icon(
+    //                       Icons.bookmark_outline,
+    //                       color: Colors.white,
+    //                     ),
+    //                   ]),
+    //                 ),
+    //               )
+    //             ],
+    //           ),
+    //         ],
+    //       ),
+    //     );
+    //   },
+    // );
   }
 }
 

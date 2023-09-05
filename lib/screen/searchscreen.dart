@@ -64,80 +64,7 @@ class SearchScreen extends StatelessWidget {
                 ],
               ),
             ),
-            body:
-
-                // BlocBuilder<SearchBloc, ISearchState>(builder: (context, state) {
-                //   if (state is SearchState) {
-                //     return Column(
-                //       children: [
-                //         Container(
-                //             height: 50,
-                //             width: double.infinity,
-                //             padding: const EdgeInsets.symmetric(horizontal: 50),
-                //             decoration:
-                //                 BoxDecoration(borderRadius: BorderRadius.circular(5)),
-                //             child: ListView.builder(
-                //               itemCount: state.totalpage,
-                //               scrollDirection: Axis.horizontal,
-                //               itemBuilder: (context, index) {
-                //                 return GestureDetector(
-                //                   onTap: () {
-                //                     BlocProvider.of<SearchBloc>(context)
-                //                         .add(LoadAllSearchEventEvent(index + 1));
-                //                   },
-                //                   child: Container(
-                //                     height: 30,
-                //                     width: 30,
-                //                     margin: const EdgeInsets.symmetric(
-                //                         horizontal: 10, vertical: 10),
-                //                     decoration: BoxDecoration(
-                //                         color: state.curentpage == index + 1
-                //                             ? Colors.green
-                //                             : const Color.fromARGB(114, 57, 57, 57),
-                //                         borderRadius: BorderRadius.circular(5)),
-                //                     child: Center(child: Text((index).toString())),
-                //                   ),
-                //                 );
-                //               },
-                //             )),
-                //         Expanded(
-                //           child: SizedBox(
-                //             height: MediaQuery.of(context).size.height,
-                //             width: MediaQuery.of(context).size.width,
-                //             child: GridView.builder(
-                //               gridDelegate:
-                //                   const SliverGridDelegateWithFixedCrossAxisCount(
-                //                       crossAxisCount: 2, mainAxisExtent: 220),
-                //               itemCount: state.allwallpaper.length,
-                //               scrollDirection: Axis.vertical,
-                //               itemBuilder: (context, index) {
-                //                 return LoadeImage(state.allwallpaper[index]);
-                //               },
-                //             ),
-                //           ),
-                //         ),
-                //       ],
-                //     );
-                //   } else if (state is ErrorSearchState) {
-                //     return Center(
-                //       child: ElevatedButton(
-                //           onPressed: () {
-                //             BlocProvider.of<SearchBloc>(context)
-                //                 .add(LoadAllSearchEventEvent(state.curentpage));
-                //           },
-                //           style: ElevatedButton.styleFrom(
-                //               minimumSize: const Size(100, 40),
-                //               shape: RoundedRectangleBorder(
-                //                   borderRadius: BorderRadius.circular(10))),
-                //           child: const Text("retry")),
-                //     );
-                //   } else if (state is LoadSearchState) {
-                //     return const Center(
-                //       child: CircularProgressIndicator(),
-                //     );
-                //   } else {
-                //     return
-                SingleChildScrollView(
+            body: SingleChildScrollView(
               child: Column(
                 children: [
                   ValueListenableBuilder(
@@ -162,7 +89,7 @@ class SearchScreen extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Recent searches",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600),
@@ -171,7 +98,7 @@ class SearchScreen extends StatelessWidget {
                                       onTap: () async {
                                         await box.clear();
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         "Clear all",
                                         style: TextStyle(
                                             color: Color.fromARGB(
@@ -181,7 +108,7 @@ class SearchScreen extends StatelessWidget {
                                     )
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 SizedBox(
@@ -222,7 +149,7 @@ class SearchScreen extends StatelessWidget {
                                                 },
                                                 child: Text(value.values
                                                     .toList()[index])),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 12,
                                             ),
                                             GestureDetector(
@@ -230,7 +157,7 @@ class SearchScreen extends StatelessWidget {
                                                 await box.delete(value.values
                                                     .toList()[index]);
                                               },
-                                              child: Icon(
+                                              child: const Icon(
                                                 Icons.cancel_rounded,
                                                 size: 20,
                                               ),
@@ -258,7 +185,7 @@ class SearchScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8)),
                     child: Column(
                       children: [
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
@@ -267,7 +194,7 @@ class SearchScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Wrap(
@@ -280,7 +207,7 @@ class SearchScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -293,7 +220,7 @@ class SearchScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8)),
                     child: Column(
                       children: [
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
@@ -302,7 +229,7 @@ class SearchScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Wrap(

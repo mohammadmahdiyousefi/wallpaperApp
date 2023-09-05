@@ -35,529 +35,114 @@ class HomePage extends StatelessWidget {
           return CustomScrollView(
             slivers: [
               state.getallphoto.fold((l) {
-                return SliverToBoxAdapter(
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 270,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 5, top: 10, bottom: 10, right: 5),
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .secondaryContainer,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  elevation: 0,
-                                  shadowColor: Colors.transparent,
-                                  backgroundColor: Colors.transparent),
-                              child: Navgationtoallphoto(
-                                titel: "All",
-                              ),
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<Homebloc>(context)
-                                    .add(HomeAllPhotoEvent());
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(100, 40),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              child: const Text("retry")),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                if (l == "Loading") {
+                  return Leftsiderror(
+                    titel: "All",
+                    loadingstate: true,
+                  );
+                } else {
+                  return Leftsiderror(
+                    titel: "All",
+                    loadingstate: false,
+                  );
+                }
               }, (r) {
                 allphoto.clear();
                 allphoto.addAll(r['photos']
                     .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
                     .toList());
-                return SliverToBoxAdapter(
-                    child: SizedBox(
-                  width: double.infinity,
-                  height: 270,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 5, top: 10, bottom: 10, right: 5),
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .secondaryContainer,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                elevation: 0,
-                                shadowColor: Colors.transparent,
-                                backgroundColor: Colors.transparent),
-                            onPressed: () {
-                              BlocProvider.of<AllPhotoBloc>(context)
-                                  .add(LoadAllPhotoEvent(1));
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) {
-                                  return AllPhotoScreen("All");
-                                },
-                              ));
-                            },
-                            child: Navgationtoallphoto(
-                              titel: "All",
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: allphoto.length,
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.only(left: 15),
-                          itemBuilder: (context, index) {
-                            return LoadeImage(allphoto[index]);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ));
+                return Imageviewlist(
+                  allphoto: allphoto,
+                  titel: "All",
+                );
               }),
               state.gettopphoto.fold((l) {
-                return SliverToBoxAdapter(
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 270,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 5, top: 10, bottom: 10, right: 5),
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .secondaryContainer,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  elevation: 0,
-                                  shadowColor: Colors.transparent,
-                                  backgroundColor: Colors.transparent),
-                              child: Navgationtoallphoto(
-                                titel: "Top",
-                              ),
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<Homebloc>(context)
-                                    .add(HomeTopPhotoEvent());
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(100, 40),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              child: const Text("retry")),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                if (l == "Loading") {
+                  return Leftsiderror(
+                    titel: "Top",
+                    loadingstate: true,
+                  );
+                } else {
+                  return Leftsiderror(
+                    titel: "Top",
+                    loadingstate: false,
+                  );
+                }
               }, (r) {
                 topphoto.clear();
                 topphoto.addAll(r['photos']
                     .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
                     .toList());
-                return SliverToBoxAdapter(
-                    child: SizedBox(
-                  width: double.infinity,
-                  height: 270,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 5, top: 10, bottom: 10, right: 5),
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .secondaryContainer,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                elevation: 0,
-                                shadowColor: Colors.transparent,
-                                backgroundColor: Colors.transparent),
-                            onPressed: () {
-                              BlocProvider.of<TopPhotoBloc>(context)
-                                  .add(LoadTopPhotoEvent(1));
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) {
-                                  return AllPhotoScreen("Top");
-                                },
-                              ));
-                            },
-                            child: Navgationtoallphoto(
-                              titel: "Top",
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: topphoto.length,
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.only(left: 15),
-                          itemBuilder: (context, index) {
-                            return LoadeImage(topphoto[index]);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ));
+                return Imageviewlist(
+                  allphoto: topphoto,
+                  titel: "Top",
+                );
               }),
               state.getnaturephoto.fold((l) {
-                return SliverToBoxAdapter(
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 270,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 5, top: 10, bottom: 10, right: 5),
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .secondaryContainer,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  elevation: 0,
-                                  shadowColor: Colors.transparent,
-                                  backgroundColor: Colors.transparent),
-                              child: Navgationtoallphoto(
-                                titel: "Nature",
-                              ),
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<Homebloc>(context)
-                                    .add(HomeNaturePhotoEvent());
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(100, 40),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              child: const Text("retry")),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                if (l == "Loading") {
+                  return Leftsiderror(
+                    titel: "Nature",
+                    loadingstate: true,
+                  );
+                } else {
+                  return Leftsiderror(
+                    titel: "Nature",
+                    loadingstate: false,
+                  );
+                }
               }, (r) {
                 naturephoto.clear();
                 naturephoto.addAll(r['photos']
                     .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
                     .toList());
-                return SliverToBoxAdapter(
-                    child: SizedBox(
-                  width: double.infinity,
-                  height: 270,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 5, top: 10, bottom: 10, right: 5),
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .secondaryContainer,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                elevation: 0,
-                                shadowColor: Colors.transparent,
-                                backgroundColor: Colors.transparent),
-                            onPressed: () {
-                              BlocProvider.of<NaturePhotoBloc>(context)
-                                  .add(LoadAllNaturePhotoEvent(1));
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) {
-                                  return AllPhotoScreen("Nature");
-                                },
-                              ));
-                            },
-                            child: Navgationtoallphoto(
-                              titel: "Nature",
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: naturephoto.length,
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.only(left: 15),
-                          itemBuilder: (context, index) {
-                            return LoadeImage(naturephoto[index]);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ));
+                return Imageviewlist(
+                  allphoto: naturephoto,
+                  titel: "Nature",
+                );
               }),
               state.getanimalphoto.fold((l) {
-                return SliverToBoxAdapter(
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 270,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 5, top: 10, bottom: 10, right: 5),
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .secondaryContainer,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  elevation: 0,
-                                  shadowColor: Colors.transparent,
-                                  backgroundColor: Colors.transparent),
-                              child: Navgationtoallphoto(
-                                titel: "Animal",
-                              ),
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<Homebloc>(context)
-                                    .add(HomeAnimalPhotoEvent());
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(100, 40),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              child: const Text("retry")),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                if (l == "Loading") {
+                  return Leftsiderror(
+                    titel: "Animal",
+                    loadingstate: true,
+                  );
+                } else {
+                  return Leftsiderror(
+                    titel: "Animal",
+                    loadingstate: false,
+                  );
+                }
               }, (r) {
                 anlimalphoto.clear();
                 anlimalphoto.addAll(r['photos']
                     .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
                     .toList());
-                return SliverToBoxAdapter(
-                    child: SizedBox(
-                  width: double.infinity,
-                  height: 270,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 5, top: 10, bottom: 10, right: 5),
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .secondaryContainer,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                elevation: 0,
-                                shadowColor: Colors.transparent,
-                                backgroundColor: Colors.transparent),
-                            onPressed: () {
-                              BlocProvider.of<AnimalPhotoBloc>(context)
-                                  .add(LoadAllAnimalPhotoEvent(1));
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) {
-                                  return AllPhotoScreen("Animal");
-                                },
-                              ));
-                            },
-                            child: Navgationtoallphoto(
-                              titel: "Animal",
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: anlimalphoto.length,
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.only(left: 15),
-                          itemBuilder: (context, index) {
-                            return LoadeImage(anlimalphoto[index]);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ));
+                return Imageviewlist(
+                  allphoto: anlimalphoto,
+                  titel: "Animal",
+                );
               }),
               state.getpeoplephoto.fold((l) {
-                return SliverToBoxAdapter(
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 270,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 5, top: 10, bottom: 10, right: 5),
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .secondaryContainer,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  elevation: 0,
-                                  shadowColor: Colors.transparent,
-                                  backgroundColor: Colors.transparent),
-                              child: Navgationtoallphoto(
-                                titel: "People",
-                              ),
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                BlocProvider.of<Homebloc>(context)
-                                    .add(HomePeoplePhotoEvent());
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(100, 40),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              child: const Text("retry")),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
+                if (l == "Loading") {
+                  return Leftsiderror(
+                    titel: "People",
+                    loadingstate: true,
+                  );
+                } else {
+                  return Leftsiderror(
+                    titel: "People",
+                    loadingstate: false,
+                  );
+                }
               }, (r) {
                 peoplephoto.clear();
                 peoplephoto.addAll(r['photos']
                     .map<Photo>((jsonObject) => Photo.fromJson(jsonObject))
                     .toList());
-                return SliverToBoxAdapter(
-                    child: SizedBox(
-                  width: double.infinity,
-                  height: 270,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 5, top: 10, bottom: 10, right: 5),
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .secondaryContainer,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                elevation: 0,
-                                shadowColor: Colors.transparent,
-                                backgroundColor: Colors.transparent),
-                            onPressed: () {
-                              BlocProvider.of<PeoplePhotoBloc>(context)
-                                  .add(LoadAllPeoplePhotoEvent(1));
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) {
-                                  return AllPhotoScreen("People");
-                                },
-                              ));
-                            },
-                            child: Navgationtoallphoto(
-                              titel: "People",
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: peoplephoto.length,
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.only(left: 15),
-                          itemBuilder: (context, index) {
-                            return LoadeImage(peoplephoto[index]);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ));
+                return Imageviewlist(
+                  allphoto: peoplephoto,
+                  titel: "People",
+                );
               })
             ],
           );
@@ -587,6 +172,154 @@ class HomePage extends StatelessWidget {
           );
         }
       })),
+    );
+  }
+}
+
+class Imageviewlist extends StatelessWidget {
+  const Imageviewlist({
+    super.key,
+    required this.allphoto,
+    required this.titel,
+  });
+  final String titel;
+  final List<Photo> allphoto;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+        child: SizedBox(
+      width: double.infinity,
+      height: 270,
+      child: Column(
+        children: [
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 5, top: 10, bottom: 10, right: 5),
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.secondaryContainer,
+                  borderRadius: BorderRadius.circular(10)),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    elevation: 0,
+                    shadowColor: Colors.transparent,
+                    backgroundColor: Colors.transparent),
+                onPressed: () {
+                  if (titel == "All") {
+                    BlocProvider.of<AllPhotoBloc>(context)
+                        .add(LoadAllPhotoEvent(1));
+                  } else if (titel == "Top") {
+                    BlocProvider.of<TopPhotoBloc>(context)
+                        .add(LoadTopPhotoEvent(1));
+                  } else if (titel == "Nature") {
+                    BlocProvider.of<NaturePhotoBloc>(context)
+                        .add(LoadAllNaturePhotoEvent(1));
+                  } else if (titel == "Animal") {
+                    BlocProvider.of<AnimalPhotoBloc>(context)
+                        .add(LoadAllAnimalPhotoEvent(1));
+                  } else if (titel == "People") {
+                    BlocProvider.of<PeoplePhotoBloc>(context)
+                        .add(LoadAllPeoplePhotoEvent(1));
+                  }
+
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) {
+                      return AllPhotoScreen(titel);
+                    },
+                  ));
+                },
+                child: Navgationtoallphoto(
+                  titel: titel,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: allphoto.length,
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(left: 15),
+              itemBuilder: (context, index) {
+                return LoadeImage(allphoto[index]);
+              },
+            ),
+          ),
+        ],
+      ),
+    ));
+  }
+}
+
+// ignore: must_be_immutable
+class Leftsiderror extends StatelessWidget {
+  Leftsiderror({super.key, this.titel = "", this.loadingstate = false});
+  String titel;
+  bool loadingstate;
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        width: double.infinity,
+        height: 270,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 5, top: 10, bottom: 10, right: 5),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondaryContainer,
+                    borderRadius: BorderRadius.circular(10)),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                      backgroundColor: Colors.transparent),
+                  child: Navgationtoallphoto(
+                    titel: titel,
+                  ),
+                ),
+              ),
+            ),
+            Center(
+                child: loadingstate == false
+                    ? ElevatedButton(
+                        onPressed: () {
+                          if (titel == "All") {
+                            BlocProvider.of<Homebloc>(context)
+                                .add(HomeAllPhotoEvent());
+                          } else if (titel == "Top") {
+                            BlocProvider.of<Homebloc>(context)
+                                .add(HomeTopPhotoEvent());
+                          } else if (titel == "Nature") {
+                            BlocProvider.of<Homebloc>(context)
+                                .add(HomeNaturePhotoEvent());
+                          } else if (titel == "Animal") {
+                            BlocProvider.of<Homebloc>(context)
+                                .add(HomeAnimalPhotoEvent());
+                          } else if (titel == "People") {
+                            BlocProvider.of<Homebloc>(context)
+                                .add(HomePeoplePhotoEvent());
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(100, 40),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10))),
+                        child: const Text("retry"))
+                    : const CircularProgressIndicator()),
+          ],
+        ),
+      ),
     );
   }
 }

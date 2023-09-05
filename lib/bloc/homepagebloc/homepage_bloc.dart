@@ -41,26 +41,41 @@ class Homebloc extends Bloc<IHomeEvent, IHomeState> {
       }
     });
     on<HomeAllPhotoEvent>((event, emit) async {
+      allresponse = left("Loading");
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
       allresponse = await _repository.getphotorepository();
       emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
           peopleresponse));
     });
     on<HomeTopPhotoEvent>((event, emit) async {
+      topresponse = left("Loading");
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
       topresponse = await _toprepository.getphotorepository();
       emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
           peopleresponse));
     });
     on<HomeNaturePhotoEvent>((event, emit) async {
+      natureresponse = left("Loading");
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
       natureresponse = await _naturerepository.getphotorepository();
       emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
           peopleresponse));
     });
     on<HomeAnimalPhotoEvent>((event, emit) async {
+      animalresponse = left("Loading");
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
       animalresponse = await _animalrepository.getphotorepository();
       emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
           peopleresponse));
     });
     on<HomePeoplePhotoEvent>((event, emit) async {
+      peopleresponse = left("Loading");
+      emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
+          peopleresponse));
       peopleresponse = await _peoplerepository.getphotorepository();
       emit(HomeState(allresponse, topresponse, natureresponse, animalresponse,
           peopleresponse));

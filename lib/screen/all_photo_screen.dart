@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer_effect/shimmer_effect.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_bloc.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_event.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_state.dart';
-import 'package:wallpaper/bloc/animal/animal_photo_bloc.dart';
-import 'package:wallpaper/bloc/animal/animal_photo_state.dart';
-import 'package:wallpaper/bloc/nature/nature_photo_bloc.dart';
-import 'package:wallpaper/bloc/nature/nature_photo_state.dart';
-import 'package:wallpaper/bloc/people/people_photo_bloc.dart';
-import 'package:wallpaper/bloc/people/people_photo_state.dart';
-import 'package:wallpaper/bloc/search/search_bloc.dart';
-import 'package:wallpaper/bloc/search/search_event.dart';
-import 'package:wallpaper/bloc/search/search_state.dart';
-import 'package:wallpaper/bloc/topphoto/top_photo_bloc.dart';
-import 'package:wallpaper/bloc/topphoto/top_photo_state.dart';
-import 'package:wallpaper/model/photo.dart';
+import 'package:photofetchpro/bloc/allphotobloc/all_photo_bloc.dart';
+import 'package:photofetchpro/bloc/allphotobloc/all_photo_event.dart';
+import 'package:photofetchpro/bloc/allphotobloc/all_photo_state.dart';
+import 'package:photofetchpro/bloc/animal/animal_photo_bloc.dart';
+import 'package:photofetchpro/bloc/animal/animal_photo_state.dart';
+import 'package:photofetchpro/bloc/nature/nature_photo_bloc.dart';
+import 'package:photofetchpro/bloc/nature/nature_photo_state.dart';
+import 'package:photofetchpro/bloc/people/people_photo_bloc.dart';
+import 'package:photofetchpro/bloc/people/people_photo_state.dart';
+import 'package:photofetchpro/bloc/search/search_bloc.dart';
+import 'package:photofetchpro/bloc/search/search_event.dart';
+import 'package:photofetchpro/bloc/search/search_state.dart';
+import 'package:photofetchpro/bloc/topphoto/top_photo_bloc.dart';
+import 'package:photofetchpro/bloc/topphoto/top_photo_state.dart';
+import 'package:photofetchpro/model/photo.dart';
 import '../bloc/animal/animal_photo_event.dart';
 import '../bloc/nature/nature_photo_event.dart';
 import '../bloc/people/people_photo_event.dart';
@@ -39,7 +39,7 @@ class AllPhotoScreen extends StatelessWidget {
                 builder: (context, state) {
                 if (state is AllPhotoState) {
                   return Finishload(
-                      wallpaper: state.allwallpaper,
+                      photofetchpro: state.allwallpaper,
                       courentpage: state.curentpage,
                       totalpage: state.totalpage,
                       status: "All");
@@ -54,7 +54,7 @@ class AllPhotoScreen extends StatelessWidget {
                     builder: (context, state) {
                     if (state is NaturePhotoState) {
                       return Finishload(
-                          wallpaper: state.allwallpaper,
+                          photofetchpro: state.allwallpaper,
                           courentpage: state.curentpage,
                           totalpage: state.totalpage,
                           status: "Nature");
@@ -69,7 +69,7 @@ class AllPhotoScreen extends StatelessWidget {
                         builder: (context, state) {
                         if (state is TopPhotoState) {
                           return Finishload(
-                            wallpaper: state.allwallpaper,
+                            photofetchpro: state.allwallpaper,
                             courentpage: state.curentpage,
                             totalpage: state.totalpage,
                             status: "Top",
@@ -85,7 +85,7 @@ class AllPhotoScreen extends StatelessWidget {
                             builder: (context, state) {
                             if (state is AnimalPhotoState) {
                               return Finishload(
-                                  wallpaper: state.allwallpaper,
+                                  photofetchpro: state.allwallpaper,
                                   courentpage: state.curentpage,
                                   totalpage: state.totalpage,
                                   status: "Animal");
@@ -100,7 +100,7 @@ class AllPhotoScreen extends StatelessWidget {
                                 builder: (context, state) {
                                 if (state is PeoplePhotoState) {
                                   return Finishload(
-                                      wallpaper: state.allwallpaper,
+                                      photofetchpro: state.allwallpaper,
                                       courentpage: state.curentpage,
                                       totalpage: state.totalpage,
                                       status: "People");
@@ -114,7 +114,7 @@ class AllPhotoScreen extends StatelessWidget {
                                 builder: (context, state) {
                                 if (state is SearchState) {
                                   return Finishload(
-                                    wallpaper: state.allwallpaper,
+                                    photofetchpro: state.allwallpaper,
                                     courentpage: state.curentpage,
                                     totalpage: state.totalpage,
                                     status: status,
@@ -257,11 +257,11 @@ class errorload extends StatelessWidget {
 class Finishload extends StatelessWidget {
   Finishload(
       {super.key,
-      required this.wallpaper,
+      required this.photofetchpro,
       required this.courentpage,
       required this.totalpage,
       required this.status});
-  final List<Photo> wallpaper;
+  final List<Photo> photofetchpro;
   int totalpage;
   int courentpage;
   String status;
@@ -323,10 +323,10 @@ class Finishload extends StatelessWidget {
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, mainAxisExtent: 220),
-            itemCount: wallpaper.length,
+            itemCount: photofetchpro.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
-              return LoadeImage(wallpaper[index]);
+              return LoadeImage(photofetchpro[index]);
             },
           ),
         ),

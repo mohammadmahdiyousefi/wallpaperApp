@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallpaper/bloc/savephoto/save_photo_bloc.dart';
-import 'package:wallpaper/bloc/savephoto/save_photo_state.dart';
-import 'package:wallpaper/widget/loadimage.dart';
+import 'package:photofetchpro/bloc/savephoto/save_photo_bloc.dart';
+import 'package:photofetchpro/bloc/savephoto/save_photo_state.dart';
+import 'package:photofetchpro/widget/loadimage.dart';
 
 class SavePhotoScreen extends StatelessWidget {
   const SavePhotoScreen({super.key});

@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:wallpaper/bloc/savephoto/save_photo_event.dart';
-import 'package:wallpaper/bloc/savephoto/save_photo_state.dart';
-import 'package:wallpaper/model/photo.dart';
+import 'package:photofetchpro/bloc/savephoto/save_photo_event.dart';
+import 'package:photofetchpro/bloc/savephoto/save_photo_state.dart';
+import 'package:photofetchpro/model/photo.dart';
 
 class SavePhotoBloc extends Bloc<ISavePhotoEvent, ISavePhotoState> {
   var box = Hive.box("photo");

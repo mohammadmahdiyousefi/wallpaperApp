@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallpaper/bloc/savephoto/save_photo_bloc.dart';
-import 'package:wallpaper/bloc/savephoto/save_photo_event.dart';
-import 'package:wallpaper/screen/home_screen.dart';
-import 'package:wallpaper/screen/savescreen.dart';
-import 'package:wallpaper/screen/searchscreen.dart';
-import 'package:wallpaper/screen/seting_screen.dart';
+import 'package:photofetchpro/bloc/savephoto/save_photo_bloc.dart';
+import 'package:photofetchpro/bloc/savephoto/save_photo_event.dart';
+import 'package:photofetchpro/screen/home_screen.dart';
+import 'package:photofetchpro/screen/savescreen.dart';
+import 'package:photofetchpro/screen/searchscreen.dart';
+import 'package:photofetchpro/screen/seting_screen.dart';
 
 class SwithPage extends StatefulWidget {
   const SwithPage({super.key});

@@ -1,4 +1,4 @@
-import 'package:wallpaper/model/photo.dart';
+import 'package:photofetchpro/model/photo.dart';
 
 abstract class ISavePhotoState {}
 

@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_event.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_state.dart';
-import 'package:wallpaper/di/di.dart';
-import 'package:wallpaper/model/photo.dart';
-import 'package:wallpaper/repository/allphotorepository.dart';
+import 'package:photofetchpro/bloc/allphotobloc/all_photo_event.dart';
+import 'package:photofetchpro/bloc/allphotobloc/all_photo_state.dart';
+import 'package:photofetchpro/di/di.dart';
+import 'package:photofetchpro/model/photo.dart';
+import 'package:photofetchpro/repository/allphotorepository.dart';
 
 class AllPhotoBloc extends Bloc<IAllPhotoEvent, IAllPhotoState> {
   int curentpage = 0;

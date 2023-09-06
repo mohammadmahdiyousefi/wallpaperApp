@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:wallpaper/bloc/homepagebloc/homepage_event.dart';
-import 'package:wallpaper/bloc/homepagebloc/homepage_state.dart';
+import 'package:photofetchpro/bloc/homepagebloc/homepage_event.dart';
+import 'package:photofetchpro/bloc/homepagebloc/homepage_state.dart';
 import '../../di/di.dart';
 import '../../repository/allphotorepository.dart';
 import '../../repository/animalphotorepository.dart';

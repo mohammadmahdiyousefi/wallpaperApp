@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wallpaper/bloc/search/search_event.dart';
-import 'package:wallpaper/bloc/search/search_state.dart';
-import 'package:wallpaper/repository/searchrepository.dart';
+import 'package:photofetchpro/bloc/search/search_event.dart';
+import 'package:photofetchpro/bloc/search/search_state.dart';
+import 'package:photofetchpro/repository/searchrepository.dart';
 
 import '../../di/di.dart';
 import '../../model/photo.dart';

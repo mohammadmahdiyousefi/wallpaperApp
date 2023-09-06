@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:wallpaper/model/photo.dart';
-import 'package:wallpaper/repository/animalphotorepository.dart';
+import 'package:photofetchpro/model/photo.dart';
+import 'package:photofetchpro/repository/animalphotorepository.dart';
 
 import '../../di/di.dart';
 import 'animal_photo_event.dart';

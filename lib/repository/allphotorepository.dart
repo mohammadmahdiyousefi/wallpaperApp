@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:wallpaper/data/datasourc/allphotodatasourc.dart';
-import 'package:wallpaper/di/di.dart';
+import 'package:photofetchpro/data/datasourc/allphotodatasourc.dart';
+import 'package:photofetchpro/di/di.dart';
 
 abstract class IAllPhotoRepository {
   Future<Either<String, Map>> getphotorepository();

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:wallpaper/bloc/nature/nature_photo_event.dart';
-import 'package:wallpaper/bloc/nature/nature_photo_state.dart';
-import 'package:wallpaper/model/photo.dart';
-import 'package:wallpaper/repository/nathurephotorepository.dart';
+import 'package:photofetchpro/bloc/nature/nature_photo_event.dart';
+import 'package:photofetchpro/bloc/nature/nature_photo_state.dart';
+import 'package:photofetchpro/model/photo.dart';
+import 'package:photofetchpro/repository/nathurephotorepository.dart';
 
 import '../../di/di.dart';
 

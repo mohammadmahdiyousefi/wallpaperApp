@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:shimmer_effect/shimmer_effect.dart';
-import 'package:wallpaper/model/photo.dart';
+import 'package:photofetchpro/model/photo.dart';
 import '../bloc/savephoto/save_photo_bloc.dart';
 import '../bloc/savephoto/save_photo_event.dart';
 import '../screen/showphoto.dart';

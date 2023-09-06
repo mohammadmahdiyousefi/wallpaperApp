@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wallpaper/bloc/allphotobloc/all_photo_bloc.dart';
-import 'package:wallpaper/bloc/animal/animal_photo_bloc.dart';
-import 'package:wallpaper/bloc/homepagebloc/homepage_bloc.dart';
-import 'package:wallpaper/bloc/nature/nature_photo_bloc.dart';
-import 'package:wallpaper/bloc/people/people_photo_bloc.dart';
-import 'package:wallpaper/bloc/savephoto/save_photo_bloc.dart';
-import 'package:wallpaper/bloc/search/search_bloc.dart';
-import 'package:wallpaper/bloc/splashbloc/splash_bloc.dart';
-import 'package:wallpaper/bloc/splashbloc/splash_event.dart';
-import 'package:wallpaper/bloc/topphoto/top_photo_bloc.dart';
-import 'package:wallpaper/screen/splashscreen.dart';
-import 'package:wallpaper/screen/swith_page.dart';
-import 'package:wallpaper/theme/colors_schemes.dart';
+import 'package:photofetchpro/bloc/allphotobloc/all_photo_bloc.dart';
+import 'package:photofetchpro/bloc/animal/animal_photo_bloc.dart';
+import 'package:photofetchpro/bloc/homepagebloc/homepage_bloc.dart';
+import 'package:photofetchpro/bloc/nature/nature_photo_bloc.dart';
+import 'package:photofetchpro/bloc/people/people_photo_bloc.dart';
+import 'package:photofetchpro/bloc/savephoto/save_photo_bloc.dart';
+import 'package:photofetchpro/bloc/search/search_bloc.dart';
+import 'package:photofetchpro/bloc/splashbloc/splash_bloc.dart';
+import 'package:photofetchpro/bloc/splashbloc/splash_event.dart';
+import 'package:photofetchpro/bloc/topphoto/top_photo_bloc.dart';
+import 'package:photofetchpro/screen/splashscreen.dart';
+import 'package:photofetchpro/screen/swith_page.dart';
+import 'package:photofetchpro/theme/colors_schemes.dart';
 import 'di/di.dart';
 
 void main() async {

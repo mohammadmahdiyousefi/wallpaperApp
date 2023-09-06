@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaper/model/photo.dart';
+import 'package:photofetchpro/model/photo.dart';
 
 Future photoQuality(
   BuildContext context,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:wallpaper/bloc/homepagebloc/homepage_bloc.dart';
-import 'package:wallpaper/bloc/homepagebloc/homepage_event.dart';
+import 'package:photofetchpro/bloc/homepagebloc/homepage_bloc.dart';
+import 'package:photofetchpro/bloc/homepagebloc/homepage_event.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

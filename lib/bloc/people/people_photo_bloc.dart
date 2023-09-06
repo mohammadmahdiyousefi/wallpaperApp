@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:wallpaper/model/photo.dart';
-import 'package:wallpaper/repository/peoplephotorepository.dart';
+import 'package:photofetchpro/model/photo.dart';
+import 'package:photofetchpro/repository/peoplephotorepository.dart';
 
 import '../../di/di.dart';
 import 'people_photo_event.dart';

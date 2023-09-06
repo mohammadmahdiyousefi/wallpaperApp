@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:wallpaper/di/di.dart';
+import 'package:photofetchpro/di/di.dart';
 import '../data/datasourc/peoplephotodatasouirc.dart';
 
 abstract class IPeoplePhotoRepository {

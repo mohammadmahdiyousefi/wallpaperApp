@@ -1,17 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:wallpaper/data/datasourc/allphotodatasourc.dart';
-import 'package:wallpaper/data/datasourc/animalphotodatasourc.dart';
-import 'package:wallpaper/data/datasourc/naturephotodatasourc.dart';
-import 'package:wallpaper/data/datasourc/peoplephotodatasouirc.dart';
-import 'package:wallpaper/data/datasourc/searchdatasourc.dart';
-import 'package:wallpaper/data/datasourc/topphotodatasourc.dart';
-import 'package:wallpaper/repository/allphotorepository.dart';
-import 'package:wallpaper/repository/animalphotorepository.dart';
-import 'package:wallpaper/repository/nathurephotorepository.dart';
-import 'package:wallpaper/repository/peoplephotorepository.dart';
-import 'package:wallpaper/repository/searchrepository.dart';
-import 'package:wallpaper/repository/topphotorepository.dart';
+import 'package:photofetchpro/data/datasourc/allphotodatasourc.dart';
+import 'package:photofetchpro/data/datasourc/animalphotodatasourc.dart';
+import 'package:photofetchpro/data/datasourc/naturephotodatasourc.dart';
+import 'package:photofetchpro/data/datasourc/peoplephotodatasouirc.dart';
+import 'package:photofetchpro/data/datasourc/searchdatasourc.dart';
+import 'package:photofetchpro/data/datasourc/topphotodatasourc.dart';
+import 'package:photofetchpro/repository/allphotorepository.dart';
+import 'package:photofetchpro/repository/animalphotorepository.dart';
+import 'package:photofetchpro/repository/nathurephotorepository.dart';
+import 'package:photofetchpro/repository/peoplephotorepository.dart';
+import 'package:photofetchpro/repository/searchrepository.dart';
+import 'package:photofetchpro/repository/topphotorepository.dart';
 
 var locator = GetIt.instance;
 Future<void> getItInit() async {

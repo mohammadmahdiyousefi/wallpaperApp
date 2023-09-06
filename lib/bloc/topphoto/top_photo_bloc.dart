@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:wallpaper/bloc/topphoto/top_photo_event.dart';
-import 'package:wallpaper/bloc/topphoto/top_photo_state.dart';
-import 'package:wallpaper/model/photo.dart';
-import 'package:wallpaper/repository/topphotorepository.dart';
+import 'package:photofetchpro/bloc/topphoto/top_photo_event.dart';
+import 'package:photofetchpro/bloc/topphoto/top_photo_state.dart';
+import 'package:photofetchpro/model/photo.dart';
+import 'package:photofetchpro/repository/topphotorepository.dart';
 
 import '../../di/di.dart';
 
